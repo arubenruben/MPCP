@@ -1,0 +1,19 @@
+.text
+.global STRLEN
+.type STRLEN,"function"
+
+STRLEN:
+
+INICIO: MOV X9,#0 //X9 VAI SERVIR DE REGISTO TEMPORARIO
+		STP X29,X30,[SP,#-16]!
+
+CICLO:	LDRB W10,[X0],#1
+		CBZ W10, FIM
+		ADDS X9,X9,#1
+		B CICLO
+
+FIM: 	MOV X0,X9
+		LDP X29,X30,[SP],#16
+		RET
+
+

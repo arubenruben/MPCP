@@ -1,0 +1,29 @@
+.text
+.global CPY_BYTE_TO_DOUBLEWORD
+.type CPY_BYTE_TO_DOUBLEWORD,"function"
+
+
+CPY_BYTE_TO_DOUBLEWORD:
+
+
+INIT:	MOV X9,#0 // VETOR DE BYTES
+		MOV X10,#0 // VETOR DE DOUBLES
+
+CICLO:	
+		CBZ X2,FIM
+
+		LDRB W11,[X0,X9]
+		
+		ADDS X9,X9,#1		
+		
+		STR X11,[X1,X10]
+		
+		ADDS X10,X10,#8
+
+		SUBS X2,X2,#1
+
+		B CICLO		
+
+
+
+FIM:	RET
